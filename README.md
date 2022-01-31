@@ -10,3 +10,27 @@ go-demo # 项目根目录
         ├── go.mod
         └── main.go
 ```
+
+
+# Java-Tomcat-demo
+
+```sh
+Java-Tomcat-demo # 项目根目录
+    ├── docker-compose.yml  # compose 配置文件，用于容器编排
+    └── helloworld          # 项目目录
+        ├── log             # 项目日志文件存放目录
+        ├── Dockerfile      # docker 配置文件，用于镜像构建
+        └── webapps         # 存放war包的目录
+```
+
+
+# Java-SpringBoot-demo
+
+```sh
+Java-SpringBoot-demo # 项目根目录
+    ├── docker-compose.yml  # compose 配置文件，用于容器编排
+    └── helloworld          # 项目目录
+        ├── log             # 项目日志文件存放目录
+        ├── Dockerfile      # docker 配置文件，用于镜像构建
+        └── helloworld.jar  
+```

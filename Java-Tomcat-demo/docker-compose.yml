@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  helloworld:
+    container_name: helloworld
+    build: ./helloworld
+    volumes:
+      - ./helloworld/webapps/:/usr/local/tomcat/webapps/
+      - ./helloworld/log/:/usr/local/tomcat/logs/
+    ports:
+      - 9001:8080

@@ -1,0 +1,12 @@
+version: '3'
+services:
+  helloworld:
+    container_name: helloworld
+    build: ./helloworld
+    volumes: #前提：项目代码中设置了将日志输出到项目根目录的文件中
+      - "./helloworld/log/:/var/www/"
+    working_dir: "/var/www/"
+    environment:
+      WEBROOT: "/var/www/"
+    ports:
+      - 9001:80 #80是需要在配置文件中设置的项目端口，也可以设置成其他的，默认8080
