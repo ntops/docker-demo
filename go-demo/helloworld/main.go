@@ -3,12 +3,17 @@ package main
 import (
 	"fmt"
 	"html"
-	"log"
 	"net/http"
 	"os"
 	"time"
+
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
+var logger *zap.Logger
+
+// 初始化 logger
 func init() {
 	// 初始化日志输出位置
 	filePath := "./log/" + time.Now().Format("20060102") + ".txt"
@@ -16,18 +21,29 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	log.SetOutput(logFile)
-	log.SetPrefix("[helloworld] ")
-	log.SetFlags(log.LstdFlags | log.Lshortfile | log.LUTC)
+
+	// zap
+	writeSyncer := zapcore.AddSync(logFile)
+	encoder := zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig())
+	core := zapcore.NewCore(encoder, writeSyncer, zapcore.DebugLevel)
+
+	logger = zap.New(core)
 }
 
 func main() {
 	// 日志测试
-	log.Println("helloworld")
+	logger.Debug("running...")
 
-	// http 服务器
+	// http 服务
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		// 输出日志
+		logger.Info("recv a request, url: " + html.EscapeString(r.URL.Path))
+
+		// 响应
 		fmt.Fprintf(w, "hello world, url: %q", html.EscapeString(r.URL.Path))
 	})
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		logger.Error(err.Error())
+	}
 }
