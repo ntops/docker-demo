@@ -1,4 +1,5 @@
-# go-demo
+# 1 结构说明
+## 1.1 go-demo
 
 ```sh
 go-demo # 项目根目录
@@ -12,7 +13,7 @@ go-demo # 项目根目录
 ```
 
 
-# Java-Tomcat-demo
+## 1.2 Java-Tomcat-demo
 
 ```sh
 Java-Tomcat-demo # 项目根目录
@@ -25,7 +26,7 @@ Java-Tomcat-demo # 项目根目录
 ```
 
 
-# Java-SpringBoot-demo
+## 1.3 Java-SpringBoot-demo
 
 ```sh
 Java-SpringBoot-demo # 项目根目录
@@ -36,11 +37,12 @@ Java-SpringBoot-demo # 项目根目录
         └── helloworld.jar  
 ```
 
-## 运行说明
-切换到项目根目录
-> cd go-demo/
 
-使用 docker-compose 构建
+# 2 运行说明
+切换到相应项目根目录
+> cd xxx-demo/
+
+在 docker-compose.yml 同级目录下使用 docker-compose 构建
 > docker-compose build
 
 运行
