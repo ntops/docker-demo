@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  helloworld:
+    container_name: helloworld
+    # build: ./helloworld # 将项目文件放置 helloworld 目录下后，可自己构建镜像
+    image: wordpress:latest # 使用官方镜像
+    environment:
+       WORDPRESS_DB_HOST: 172.17.0.1:3306
+       WORDPRESS_DB_USER: test # 用户
+       WORDPRESS_DB_NAME: test_db_name # 数据库名
+       WORDPRESS_DB_PASSWORD: test_db_password # 数据库密码
+    volumes:
+      - ./helloworld/wp-config-docker.php:/usr/src/wordpress/wp-config-docker.php # 配置文件
+      - ./helloworld/wp-content/:/usr/src/wordpress/wp-content/ # 数据文件
+    ports:
+      - 8080:80
