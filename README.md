@@ -53,16 +53,21 @@ wordpress-demo # 项目根目录
 > cd xxx-demo/
 
 在 docker-compose.yml 同级目录下使用 docker-compose 构建
-> docker-compose build
+> docker compose build
 
 运行
-> docker-compose up
+> docker compose up
 
 后台运行
-> docker-compose up -d
+> docker compose up -d
+
+重启
+> docker compose restart
 
 停止并删除
-> docker-compose down
+> docker compose down
+
+注：其他命令自行百度
 
 # 3 demo 扩展说明
 1、**关于端口**：demo 运行时监听本地 8080 端口并映射到容器内部项目相关端口
